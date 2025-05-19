@@ -1,3 +1,4 @@
+//başlangıç için default 1 admin ve 1 editor atadım hardcode şeklinde
 using Microsoft.EntityFrameworkCore;
 using TranscriptApi.Models;
 
@@ -20,14 +21,14 @@ namespace TranscriptApi.Data
                 {
                     Id = 1,
                     Username = "admin",
-                    Password = "123456", // gerçek uygulamalarda hash kullan!
+                    Password = "123456", // gerçek uygulamalarda hash kullanılmalı
                     Role = "Admin"
                 },
 		new User 
 		{
 		    Id = 2,
 		    Username = "editor",
-	            Password = "editor123", // please use has on real apps
+	            Password = "editor123", //please use has on real apps
 		    Role = "Editor"
 		}
             );

@@ -1,3 +1,4 @@
+//başta test ettiğim bir kısım JWT tokena göre erişim ayarlarken
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +14,7 @@ namespace TranscriptApi.Controllers
         {
             return Ok(new
             {
-                message = "✅ Bu endpoint'e sadece JWT token ile erişilebiliyor!",
+                message = "Bu endpoint'e sadece JWT token ile erişilebiliyor!",
                 user = User.Identity?.Name
             });
         }
@@ -24,10 +25,11 @@ namespace TranscriptApi.Controllers
         {
             return Ok(new
             {
-                message = "🔐 Bu endpoint'e sadece Admin rolüne sahip kullanıcılar erişebilir!",
+                message = " Bu endpoint'e sadece Admin rolüne sahip kullanıcılar erişebilir!",
                 user = User.Identity?.Name
             });
         }
     }
 }
+
 

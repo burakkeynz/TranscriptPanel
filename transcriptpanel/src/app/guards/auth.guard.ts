@@ -14,7 +14,6 @@ export class AuthGuard implements CanActivate {
       return false;
     }
 
-    // Eğer route.data içinde rol kontrolü varsa:
     const expectedRole = route.data['role'];
     if (expectedRole) {
       try {
@@ -31,7 +30,7 @@ export class AuthGuard implements CanActivate {
       }
     }
 
-    // Token varsa ve rol uyuyorsa → geç
+    // Token varsa ve rol uyuyorsa geç
     return true;
   }
 }

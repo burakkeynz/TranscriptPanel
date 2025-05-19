@@ -3,15 +3,10 @@
 
   <div class="collapse navbar-collapse justify-content-end">
     <ul class="navbar-nav">
-
-      <!-- Giriş yapılmışsa -->
       <li *ngIf="isLoggedIn()" class="nav-item me-2">
-        <span class="navbar-text">
-          Merhaba, {{ username }} ({{ role }})
-        </span>
+        <span class="navbar-text"> Merhaba, {{ username }} ({{ role }}) </span>
       </li>
 
-      <!-- Ana Sayfa -->
       <li *ngIf="isLoggedIn()" class="nav-item me-2">
         <a
           class="btn"
@@ -25,7 +20,6 @@
         </a>
       </li>
 
-      <!-- Admin Paneli (sadece admin) -->
       <li *ngIf="role === 'Admin'" class="nav-item me-2">
         <a
           class="btn"
@@ -38,16 +32,16 @@
           Admin Paneli
         </a>
       </li>
-	<li *ngIf="role === 'Admin'" class="nav-item me-2">
-  <a
-    class="btn btn-outline-warning"
-    [ngClass]="{ 'activeRoute': activeRoute === '/logs' }"
-    [routerLink]="['/logs']"
-  >
-    Logları Görüntüle
-  </a>
-</li>
-      <!-- Yükle (Admin veya Editor) -->
+      <li *ngIf="role === 'Admin'" class="nav-item me-2">
+        <a
+          class="btn btn-outline-warning"
+          [ngClass]="{ activeRoute: activeRoute === '/logs' }"
+          [routerLink]="['/logs']"
+        >
+          Logları Görüntüle
+        </a>
+      </li>
+
       <li *ngIf="role === 'Admin' || role === 'Editor'" class="nav-item me-2">
         <a
           class="btn"
@@ -60,12 +54,10 @@
           Yükle
         </a>
       </li>
-	
-      <!-- Çıkış -->
+
       <li *ngIf="isLoggedIn()" class="nav-item">
         <button class="btn btn-outline-danger" (click)="logout()">Çıkış</button>
       </li>
     </ul>
   </div>
 </nav>
-

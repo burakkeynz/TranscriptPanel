@@ -30,7 +30,7 @@ namespace TranscriptApi.Controllers
             var user = new User
             {
                 Username = request.Username,
-                Password = request.Password, // İleride hashlenmeli
+                Password = request.Password, // İleride hashlenmeli şu anda basic
                 Role = request.Role
             };
 

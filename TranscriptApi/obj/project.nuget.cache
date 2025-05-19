@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JSEReorWyFk=",
+  "dgSpecHash": "2AVmsAY1wJs=",
   "success": true,
-  "projectFilePath": "/Users/burakegekaya/TranscriptApi/TranscriptApi.csproj",
+  "projectFilePath": "/Users/burakegekaya/Desktop/TranscriptApi/TranscriptApi.csproj",
   "expectedPackageFiles": [
     "/Users/burakegekaya/.nuget/packages/azure.core/1.38.0/azure.core.1.38.0.nupkg.sha512",
     "/Users/burakegekaya/.nuget/packages/azure.identity/1.11.4/azure.identity.1.11.4.nupkg.sha512",

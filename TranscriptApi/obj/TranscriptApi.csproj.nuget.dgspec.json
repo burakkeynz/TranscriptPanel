@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/burakegekaya/TranscriptApi/TranscriptApi.csproj": {}
+    "/Users/burakegekaya/Desktop/TranscriptApi/TranscriptApi.csproj": {}
   },
   "projects": {
-    "/Users/burakegekaya/TranscriptApi/TranscriptApi.csproj": {
+    "/Users/burakegekaya/Desktop/TranscriptApi/TranscriptApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/burakegekaya/TranscriptApi/TranscriptApi.csproj",
+        "projectUniqueName": "/Users/burakegekaya/Desktop/TranscriptApi/TranscriptApi.csproj",
         "projectName": "TranscriptApi",
-        "projectPath": "/Users/burakegekaya/TranscriptApi/TranscriptApi.csproj",
+        "projectPath": "/Users/burakegekaya/Desktop/TranscriptApi/TranscriptApi.csproj",
         "packagesPath": "/Users/burakegekaya/.nuget/packages/",
-        "outputPath": "/Users/burakegekaya/TranscriptApi/obj/",
+        "outputPath": "/Users/burakegekaya/Desktop/TranscriptApi/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/burakegekaya/.nuget/NuGet/NuGet.Config"

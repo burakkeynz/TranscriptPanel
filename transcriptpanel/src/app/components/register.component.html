@@ -1,4 +1,4 @@
-<div class="container mt-5" style="max-width: 400px;">
+<div class="container mt-5" style="max-width: 400px">
   <h3 class="text-center mb-4">Kayıt Ol</h3>
 
   <form (ngSubmit)="register()">
@@ -26,13 +26,13 @@
       />
     </div>
 
-    <!-- Rol input sabit "Editor" olarak gizli gönderilir -->
     <input type="hidden" [(ngModel)]="role" name="role" [value]="'Editor'" />
 
     <div class="d-flex justify-content-between mt-4">
       <button type="submit" class="btn btn-success w-50 me-2">Kayıt Ol</button>
-      <a routerLink="/login" class="btn btn-outline-secondary w-50">Giriş Yap</a>
+      <a routerLink="/login" class="btn btn-outline-secondary w-50"
+        >Giriş Yap</a
+      >
     </div>
   </form>
 </div>
-

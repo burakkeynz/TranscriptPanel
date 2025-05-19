@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { environment } from "../../environment/environment";
-import { BehaviorSubject, tap } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment/environment';
+import { BehaviorSubject, tap } from 'rxjs';
 
 export interface LoginResponse {
   message: string;
@@ -9,10 +9,10 @@ export interface LoginResponse {
   role: string;
 }
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   private baseUrl = `${environment.apiUrl}/Auth`;
-  public userChanged = new BehaviorSubject<void>(undefined); // 🔁 Login/logout sonrası tetikleyici
+  public userChanged = new BehaviorSubject<void>(undefined);
 
   constructor(private http: HttpClient) {}
 
@@ -25,7 +25,7 @@ export class AuthService {
       .pipe(
         tap((res) => {
           this.saveToken(res.token);
-          this.userChanged.next(); // 🎯 Token güncellendiğini bildir
+          this.userChanged.next();
         })
       );
   }
@@ -35,11 +35,11 @@ export class AuthService {
   }
 
   saveToken(token: string) {
-    localStorage.setItem("token", token);
+    localStorage.setItem('token', token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem("token");
+    return localStorage.getItem('token');
   }
 
   getUsernameFromToken(): string | null {
@@ -47,10 +47,10 @@ export class AuthService {
     if (!token) return null;
 
     try {
-      const payload = JSON.parse(atob(token.split(".")[1]));
+      const payload = JSON.parse(atob(token.split('.')[1]));
       return (
         payload?.sub ||
-        payload["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] ||
+        payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'] ||
         null
       );
     } catch {
@@ -63,11 +63,11 @@ export class AuthService {
     if (!token) return null;
 
     try {
-      const payload = JSON.parse(atob(token.split(".")[1]));
+      const payload = JSON.parse(atob(token.split('.')[1]));
       return (
         payload?.role ||
         payload[
-          "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
+          'http://schemas.microsoft.com/ws/2008/06/identity/claims/role'
         ] ||
         null
       );
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("token");
-    this.userChanged.next(); // 🎯 Logout sonrası da bildir
+    localStorage.removeItem('token');
+    this.userChanged.next();
   }
 }

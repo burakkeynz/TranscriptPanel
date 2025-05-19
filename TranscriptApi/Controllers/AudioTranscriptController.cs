@@ -19,14 +19,13 @@ namespace TranscriptApi.Controllers
             _context = context;
         }
 
-        // TÜM TRANSKRIPTLERİ GETİR
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AudioTranscript>>> GetAll()
         {
             return await _context.AudioTranscripts.ToListAsync();
         }
 
-        // TEK TRANSKRIPT GETİR + LOG
         [HttpGet("{id}")]
         public async Task<ActionResult<AudioTranscript>> GetById(int id)
         {
@@ -49,7 +48,6 @@ namespace TranscriptApi.Controllers
             return transcript;
         }
 
-        // TRANSKRIPT GÜNCELLE + LOG
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] AudioTranscript updated)
         {
@@ -58,11 +56,6 @@ namespace TranscriptApi.Controllers
                 return NotFound();
 
           var username = User.Identity?.Name ?? "unknown";
-
-
-    
-          
-
             existing.Transcript = updated.Transcript;
             existing.IsEdited = true;
             existing.LastEditedAt = DateTime.UtcNow;
@@ -79,7 +72,6 @@ namespace TranscriptApi.Controllers
             return NoContent();
         }
 
-        // YENİ TRANSKRIPT OLUŞTUR + LOG
         [HttpPost]
         public async Task<IActionResult> Create(AudioTranscript newTranscript)
         {
@@ -102,7 +94,7 @@ namespace TranscriptApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = newTranscript.Id }, newTranscript);
         }
 
-        // TRANSKRIPT SİL + LOG
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -111,11 +103,6 @@ namespace TranscriptApi.Controllers
                 return NotFound();
 
             var username = User.Identity?.Name ?? "unknown";
-
-
-  
-           
-
             _context.AudioTranscripts.Remove(transcript);
 
             _context.AudioTranscriptLogs.Add(new AudioTranscriptLog
