@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Transkriptler</h2>
+
+  <ul class="list-group mb-3">
+    <li *ngFor="let t of transcripts" 
+        class="list-group-item d-flex justify-content-between align-items-center"
+        (click)="selectTranscript(t)">
+      
+      <div>
+        Transcript #{{ t.id }}<br />
+        <small>{{ t.fileName }}</small><br />
+        <span>{{ t.transcriptText }}</span> <!-- 🔥 transcriptText burada -->
+      </div>
+
+      <button *ngIf="canDelete(t)" 
+              class="btn btn-sm btn-danger ms-2" 
+              (click)="deleteTranscript(t.id); $event.stopPropagation()">
+        Sil
+      </button>
+    </li>
+  </ul>
+
+  <div *ngIf="selectedTranscript">
+    <h4>Seçilen Transkript: #{{ selectedTranscript.id }}</h4>
+    <audio [src]="audioSrc" controls class="w-100 mb-3"></audio>
+
+    <div class="mt-4">
+      <h5>Transkript Metni</h5>
+      <textarea class="form-control mb-2" 
+                rows="6" 
+                [(ngModel)]="editedText">
+      </textarea>
+      <button class="btn btn-primary" (click)="saveTranscript()">Kaydet</button>
+    </div>
+  </div>
+</div>
+
