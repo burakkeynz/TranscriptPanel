@@ -1,62 +1,62 @@
 
-# TranscriptPanel - Transkripsiyon Yönetim Uygulaması
+# TranscriptPanel - Transcription Management Application
 
-TranscriptPanel, ses dosyalarının transkriptlerinin yönetilebildiği basit ve işlevsel bir paneldir. Kullanıcılar (Admin ve Editor) sesleri dinleyebilir, metinleri düzenleyebilir ve sistem üzerinden yapılan tüm işlemler loglanır.
+TranscriptPanel is a simple yet functional panel for managing audio file transcriptions. Users (Admin and Editor) can listen to audio files, edit transcription texts, and all actions performed in the system are logged. This project was developed as a mini case study for the internship process at Çizgi Teknoloji.
 
 ----
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
 **Backend:** ASP.NET Core Web API  
 **Frontend:** Angular  
 **Veritabanı:** Microsoft SQL Server (MSSQL)  
 **Authentication:** JWT (JSON Web Token)  
-**Tasarım:** Bootstrap  
-**Geliştirme Ortamı:** Docker (MSSQL için)
+**UI Design:** Bootstrap  
+**GDevelopment Environment:** Docker (for MSSQL)
 
 ----
 
-## Kullanıcı Rolleri ve Yetkileri
+## User Roles and Permissions
 
 **Admin**
-- Tüm kullanıcıları görebilir, yeni kullanıcı ekleyebilir veya silebilir.
-- Tüm transkriptler üzerinde düzenleme yapabilir.
-- Yapılan işlemleri log ekranından izleyebilir.
+-Can view all users, add new users, or delete users.
+-Can edit all transcriptions.
+-Can monitor all operations through the log screen.
 
 **Editor**
-- Sadece kendi yüklediği transkriptler üzerinde düzenleme yapabilir.
-- Yeni transkript ekleyebilir.
-- Başka kullanıcıların transkriptlerini görebilir ancak düzenleyemez.
+-Can edit only their own uploaded transcriptions.
+-Can add new transcriptions.
+-Can view other users’ transcriptions but cannot edit them.
 
-> Not: Register (kayıt ol) ekranı sadece Editor rolüyle kayıt alınmasına izin verir. Admin kullanıcılar varsayılan olarak sistemde tanımlıdır.
+> Note: The registration screen only allows new users to sign up as Editors. Admin users are predefined in the system by default.
 
 ----
 
-## Özellikler
+## Features
 
 **1. JWT Authentication**  
-- Kullanıcılar sisteme token tabanlı giriş yapar.  
-- Token içindeki `sub` değeri kullanıcı adını, `role` değeri kullanıcı rolünü belirtir.
+-Users log into the system with token-based authentication.
+-The sub value in the token represents the username, and the role value represents the user’s role.
 
-**2. Ses ve Transkript Yönetimi**  
-- Ses dosyaları Angular tarafında `assets` klasöründe tutulur.  
-- Kullanıcılar dosya adını girerek transkript yükleyebilir.  
-- Ses dosyası oynatılabilir, transkript metni düzenlenip kaydedilebilir.
+**2. Audio and Transcription Management**  
+-Audio files are stored under the assets folder on the Angular side.
+-Users can upload transcriptions by entering the audio file name.
+-Audio playback is available, and transcription text can be edited and saved.
 
-**3. Loglama Sistemi**  
-- Her `Created`, `Edited`, `Deleted`, `Viewed` işlemi loglanır.  
-- Admin, bu işlemleri log panelinden takip edebilir.
+**3. Logging System**  
+-All Created, Edited, Deleted, and Viewed operations are logged.
+-Admin can monitor these logs through the log panel.
 
-**4. Admin Paneli**  
-- Kullanıcı ekleme, silme işlemleri yapılabilir.  
-- Mevcut kullanıcı listesi görüntülenir.  
-- Tüm kullanıcı aktiviteleri (loglar) görüntülenebilir.
+**4. Admin Panel**  
+-Enables adding and deleting users.
+-Displays the list of existing users.
+-Shows all user activities (logs).
 
 ----
 
-## Kurulum Adımları
+## Setup Instructions
 
-### MSSQL Docker Kurulumu
+### MSSQL Docker Setup
 
 ```bash
 docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=StrongP@ssw0rd123" \
@@ -64,7 +64,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=StrongP@ssw0rd123" \
 -d mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-> Alternatif olarak MSSQL’i lokalinize kurabilir, aynı connection string’i kullanabilirsiniz.
+> Alternatively, you can install MSSQL locally and use the same connection string.
 
 ### Backend (TranscriptApi)
 
@@ -102,26 +102,24 @@ ng serve
 
 ----
 
-## Test Dosyaları
+## Test Files
 
-- `src/assets` klasöründe 3 adet MP3 dosyası önceden yüklenmiş olarak gelir:
-  - Metallica-Whiskey-In-The-Jar.mp3
-  - Metallica-Sad-But-True.mp3
-  - Metallica-Fade-To-Black.mp3
-
-- Sisteme transkript yüklerken yalnızca dosya adını girmeniz yeterlidir. Örnek: `Metallica-Sad-But-True.mp3`
-- Eğer dosya `assets` klasöründe yoksa sadece transkript bilgisi oluşur, ses oynatılamaz.
-- Uyumlu bir isim girilirse ses dosyası da çalınabilir.
+-The src/assets folder includes 3 preloaded MP3 files:
+-Metallica-Whiskey-In-The-Jar.mp3
+-Metallica-Sad-But-True.mp3
+-Metallica-Fade-To-Black.mp3
+-When uploading a transcription, simply enter the audio file name. Example: Metallica-Sad-But-True.mp3
+-If the file does not exist in the assets folder, only the transcription record is created, and the audio cannot be played.
+-If you enter a matching filename, the audio file will also be playable.
 
 ----
 
 ## sample-transcript.json
 
-Projeyle birlikte gelen `sample-transcript.json` dosyasında örnek bir transkript kaydı yer almaktadır. Test amaçlı kullanılabilir.
-
+A sample transcription record is included in the sample-transcript.json file shipped with the project. It can be used for testing purposes.
 ----
 
-## Güvenlik Notu
+## Security Note
 
-`AppDbContextFactory.cs` içerisinde kullanılan connection string dummy veri ile bırakılmıştır. Gerçek Docker MSSQL bilgilerim güvenlik nedeniyle paylaşılmamıştır ancak proje sunumu sırasında size canlı ortam üzerinden gösterebilirim.
+The connection string used in AppDbContextFactory.cs is left as dummy data. My real Docker MSSQL credentials are not shared for security reasons; however, I can demonstrate the project on a live environment during the presentation.
 
