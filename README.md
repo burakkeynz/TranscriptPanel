@@ -1,7 +1,8 @@
 
 # TranscriptPanel - Transcription Management Application
 
-TranscriptPanel is a simple yet functional panel for managing audio file transcriptions. Users (Admin and Editor) can listen to audio files, edit transcription texts, and all actions performed in the system are logged. This project was developed as a mini case study for the internship process at Çizgi Teknoloji.
+This project is built for an internship process at Çizgi Teknoloji.
+TranscriptPanel is a simple yet functional panel for managing audio file transcriptions. Users (Admin and Editor) can listen to audio files, edit transcription texts, and all actions performed in the system are logged.
 
 ----
 
@@ -85,7 +86,7 @@ ng serve
 
 ----
 
-## Örnek Test Kullanıcıları
+## Sample Test Users
 
 ```json
 {
